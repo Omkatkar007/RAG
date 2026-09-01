@@ -1,0 +1,26 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-dotenv
+
+# Embeddings + reranking (run locally, no external API cost)
+sentence-transformers
+torch
+
+# Lexical retrieval
+rank-bm25
+
+# Dense vector store
+qdrant-client>=1.15
+
+# LLM generation (Groq-hosted Llama)
+groq
+
+# STT (Sarvam) - plain HTTP client, no official SDK required
+requests
+
+# Utilities
+tiktoken
+numpy
+tenacity

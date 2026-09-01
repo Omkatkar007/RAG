@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Government Scheme Eligibility Assistant</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --panel: #1e293b;
+    --border: #334155;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #22c55e;
+    --accent-dark: #16a34a;
+    --user-bubble: #2563eb;
+    --bot-bubble: #1e293b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel);
+  }
+  header h1 { margin: 0; font-size: 1.1rem; }
+  header p { margin: 4px 0 0; font-size: 0.8rem; color: var(--muted); }
+
+  #chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .msg { max-width: 75%; padding: 12px 16px; border-radius: 14px; line-height: 1.45; white-space: pre-wrap; }
+  .msg.user { align-self: flex-end; background: var(--user-bubble); border-bottom-right-radius: 4px; }
+  .msg.bot { align-self: flex-start; background: var(--bot-bubble); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+  .msg.system { align-self: center; font-size: 0.8rem; color: var(--muted); }
+
+  .citations { margin-top: 10px; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 8px; }
+  .citations a { color: #60a5fa; }
+
+  .verdicts { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .verdict-card { border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 0.8rem; }
+  .verdict-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.7rem; margin-left: 6px; }
+  .verdict-eligible { background: #14532d; color: #86efac; }
+  .verdict-not_eligible { background: #7f1d1d; color: #fca5a5; }
+  .verdict-possibly_eligible_needs_verification { background: #713f12; color: #fde68a; }
+
+  .disclaimer { font-size: 0.72rem; color: var(--muted); margin-top: 10px; font-style: italic; }
+
+  #inputbar {
+    display: flex;
+    gap: 8px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    background: var(--panel);
+  }
+  #textInput {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #0b1220;
+    color: var(--text);
+    font-size: 0.95rem;
+    resize: none;
+  }
+  button {
+    border: none;
+    border-radius: 10px;
+    padding: 0 18px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  #sendBtn { background: var(--accent); color: #04140a; }
+  #sendBtn:hover { background: var(--accent-dark); }
+  #micBtn { background: #334155; color: var(--text); min-width: 46px; }
+  #micBtn.recording { background: #dc2626; color: white; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .typing { display: flex; gap: 4px; padding: 4px 0; }
+  .typing span { width: 6px; height: 6px; background: var(--muted); border-radius: 50%; animation: blink 1.2s infinite; }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Government Scheme Eligibility Assistant</h1>
+    <p>Ask about Indian central government welfare schemes in plain language. Not a legal determination of eligibility.</p>
+  </header>
+
+  <div id="chat"></div>
+
+  <div id="inputbar">
+    <button id="micBtn" title="Record voice question">🎤</button>
+    <textarea id="textInput" rows="1" placeholder="e.g. I am a farmer with 2 acres, my daughter is getting married next year — what help can I get?"></textarea>
+    <button id="sendBtn">Send</button>
+  </div>
+
+<script>
+const API_BASE = window.location.origin; // same origin - frontend and API served together
+const chat = document.getElementById('chat');
+const textInput = document.getElementById('textInput');
+const sendBtn = document.getElementById('sendBtn');
+const micBtn = document.getElementById('micBtn');
+
+function addMessage(role, contentEl) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'msg ' + role;
+  if (typeof contentEl === 'string') {
+    wrapper.textContent = contentEl;
+  } else {
+    wrapper.appendChild(contentEl);
+  }
+  chat.appendChild(wrapper);
+  chat.scrollTop = chat.scrollHeight;
+  return wrapper;
+}
+
+function typingIndicator() {
+  const el = document.createElement('div');
+  el.className = 'typing';
+  el.innerHTML = '<span></span><span></span><span></span>';
+  return addMessage('bot', el);
+}
+
+function renderBotResponse(data) {
+  const container = document.createElement('div');
+
+  const answer = document.createElement('div');
+  answer.textContent = data.answer || '(no answer text)';
+  container.appendChild(answer);
+
+  if (data.verdicts && data.verdicts.length) {
+    const verdictsBox = document.createElement('div');
+    verdictsBox.className = 'verdicts';
+    data.verdicts.forEach(v => {
+      const card = document.createElement('div');
+      card.className = 'verdict-card';
+      const badgeClass = 'verdict-' + v.eligible;
+      card.innerHTML = `<strong>${v.scheme_name}</strong> <span class="verdict-badge ${badgeClass}">${v.eligible.replace(/_/g, ' ')}</span>`;
+      verdictsBox.appendChild(card);
+    });
+    container.appendChild(verdictsBox);
+  }
+
+  if (data.citations && data.citations.length) {
+    const cites = document.createElement('div');
+    cites.className = 'citations';
+    const uniqueSchemes = [...new Set(data.citations.map(c => c.scheme_name + '|' + (c.source_url || '')))];
+    cites.innerHTML = 'Sources: ' + uniqueSchemes.map(s => {
+      const [name, url] = s.split('|');
+      return url ? `<a href="${url}" target="_blank" rel="noopener">${name}</a>` : name;
+    }).join(', ');
+    container.appendChild(cites);
+  }
+
+  const disclaimer = document.createElement('div');
+  disclaimer.className = 'disclaimer';
+  disclaimer.textContent = data.disclaimer || '';
+  container.appendChild(disclaimer);
+
+  return container;
+}
+
+async function sendQuery(payload) {
+  sendBtn.disabled = true;
+  micBtn.disabled = true;
+  const indicator = typingIndicator();
+  try {
+    const res = await fetch(`${API_BASE}/query`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    indicator.remove();
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      addMessage('system', `Error: ${err.detail || res.statusText}`);
+      return;
+    }
+    const data = await res.json();
+    addMessage('bot', renderBotResponse(data));
+  } catch (e) {
+    indicator.remove();
+    addMessage('system', `Request failed: ${e.message}. Is the API server running?`);
+  } finally {
+    sendBtn.disabled = false;
+    micBtn.disabled = false;
+  }
+}
+
+function sendText() {
+  const text = textInput.value.trim();
+  if (!text) return;
+  addMessage('user', text);
+  textInput.value = '';
+  sendQuery({ input_type: 'text', text });
+}
+
+sendBtn.addEventListener('click', sendText);
+textInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendText();
+  }
+});
+
+// --- Voice input (Stage 1: Sarvam STT) ---
+let mediaRecorder = null;
+let audioChunks = [];
+
+micBtn.addEventListener('click', async () => {
+  if (mediaRecorder && mediaRecorder.state === 'recording') {
+    mediaRecorder.stop();
+    return;
+  }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+    mediaRecorder.ondataavailable = (e) => audioChunks.push(e.data);
+    mediaRecorder.onstop = async () => {
+      micBtn.classList.remove('recording');
+      const blob = new Blob(audioChunks, { type: 'audio/webm' });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64 = reader.result.split(',')[1];
+        addMessage('user', '🎤 (voice message)');
+        sendQuery({ input_type: 'voice', audio_base64: base64 });
+      };
+      reader.readAsDataURL(blob);
+      stream.getTracks().forEach(t => t.stop());
+    };
+    mediaRecorder.start();
+    micBtn.classList.add('recording');
+  } catch (e) {
+    addMessage('system', 'Microphone access denied or unavailable.');
+  }
+});
+
+addMessage('system', 'Ask a question about Indian government scheme eligibility to get started.');
+</script>
+</body>
+</html>

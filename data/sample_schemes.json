@@ -1,0 +1,130 @@
+[
+  {
+    "scheme_name": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "description": "Provides direct income support of Rs. 6,000 per year, paid in three equal installments of Rs. 2,000 each via Direct Benefit Transfer, to landholding farmer families to help with agriculture-related expenses.",
+    "eligibility_clauses": [
+      "Applicant must be an Indian citizen.",
+      "The farmer family (husband, wife, and minor children) must collectively own cultivable agricultural land, recorded in official state/UT land records, before 1 February 2019.",
+      "Institutional landholders are excluded.",
+      "Sitting or former Members of Parliament or State Legislatures, mayors, and district panchayat chairpersons are excluded.",
+      "Any serving or retired employee of Central or State Government departments, offices, or ministries is excluded, subject to specific exemptions for certain categories.",
+      "Higher-income professionals such as doctors, engineers, and income-tax payers are excluded.",
+      "Aadhaar-bank account seeding and completed e-KYC are required to receive installments."
+    ],
+    "benefit_amount": "Rs. 6,000 per year in three installments of Rs. 2,000 each, via Direct Benefit Transfer.",
+    "category_state_applicability": "All Indian states and UTs; central sector scheme.",
+    "source_url": "https://pmkisan.gov.in",
+    "last_verified": "2026-08-29"
+  },
+  {
+    "scheme_name": "Ayushman Bharat PM-JAY (Pradhan Mantri Jan Arogya Yojana)",
+    "ministry": "Ministry of Health and Family Welfare / National Health Authority",
+    "description": "Provides cashless health insurance cover of up to Rs. 5 lakh per family per year for secondary and tertiary hospitalization at empanelled public and private hospitals across India.",
+    "eligibility_clauses": [
+      "Rural households meeting at least one SECC-2011 deprivation criterion are eligible: living in a kutcha house with only one room, no adult member aged 16-59, no adult male member aged 16-59, a disabled member with no able-bodied adult, no shelter/destitute, manual scavenger family, primitive tribal group, or legally released bonded labour.",
+      "Urban households where a member works in one of the 11 identified occupational categories (e.g. construction worker, domestic worker, street vendor, rag-picker, transport worker) are eligible.",
+      "All Indian citizens aged 70 years or above are eligible under the Ayushman Vay Vandana expansion, regardless of income or SECC-2011 status, except those already covered under CGHS/ECHS who must choose one scheme.",
+      "Families with a member who pays income tax are generally excluded from the standard (non-70+) category.",
+      "Households with a regular, non-contractual government employee are generally excluded from the standard (non-70+) category.",
+      "There is no waiting period and pre-existing conditions are covered from day one for eligible beneficiaries."
+    ],
+    "benefit_amount": "Cashless cover of Rs. 5 lakh per family per year for secondary and tertiary hospitalization.",
+    "category_state_applicability": "All Indian states and UTs; SECC-2011 rural/urban deprivation categories, plus universal coverage for citizens aged 70+.",
+    "source_url": "https://pmjay.gov.in",
+    "last_verified": "2026-08-29"
+  },
+  {
+    "scheme_name": "Sukanya Samriddhi Yojana (SSY)",
+    "ministry": "Ministry of Finance / Department of Posts (Beti Bachao Beti Padhao initiative)",
+    "description": "A government-backed small savings scheme for a girl child's future education and marriage expenses, offering a high, quarterly-revised interest rate compounded annually, with tax benefits under Section 80C.",
+    "eligibility_clauses": [
+      "The account can only be opened for a resident Indian girl child, any time from birth until she turns 10 years old.",
+      "The account must be opened and managed by a parent or legal guardian until the girl turns 18, after which she can operate it herself.",
+      "Generally one account is allowed per girl child, and a maximum of two accounts per family (three in the case of twins/triplets).",
+      "Minimum deposit is Rs. 250 and maximum deposit is Rs. 1.5 lakh per financial year, for 15 years from account opening.",
+      "The account matures 21 years from the date of opening, or on the girl's marriage after she turns 18, whichever is earlier."
+    ],
+    "benefit_amount": "Interest rate of 8.2% p.a. (Q1-Q2 FY 2026-27, compounded annually, subject to quarterly government revision); tax-free (EEE) status; deduction up to Rs. 1.5 lakh under Section 80C.",
+    "category_state_applicability": "All Indian states and UTs; for families with a girl child under 10.",
+    "source_url": "https://www.nsiindia.gov.in",
+    "last_verified": "2026-08-29"
+  },
+  {
+    "scheme_name": "Pradhan Mantri Awas Yojana (PMAY) - Urban/Gramin",
+    "ministry": "Ministry of Housing and Urban Affairs / Ministry of Rural Development",
+    "description": "Provides financial assistance and interest subsidy to eligible households to construct or purchase a pucca house, aimed at achieving 'Housing for All'.",
+    "eligibility_clauses": [
+      "Applicant or applicant's family must not already own a pucca house anywhere in India.",
+      "Economically Weaker Section (EWS) and Lower Income Group (LIG) households are prioritized under PMAY-Urban; specific income slabs apply and should be verified against the current PMAY-U guidelines.",
+      "PMAY-Gramin targets houseless households and those living in kutcha/dilapidated houses in rural areas, based on the Socio-Economic Caste Census / Awaas+ survey list.",
+      "Preference is given to SC/ST households, minorities, persons with disabilities, and women-headed households, subject to state-specific implementation rules."
+    ],
+    "benefit_amount": "Central assistance/interest subsidy for house construction or purchase; exact amount varies by PMAY-U vertical (BLC/AHP/ISS) or PMAY-G unit cost, and by state.",
+    "category_state_applicability": "All Indian states and UTs; separate urban and rural (Gramin) verticals with different eligibility lists.",
+    "source_url": "https://pmaymis.gov.in",
+    "last_verified": "2026-08-29",
+    "note": "Income slab thresholds change periodically - verify current EWS/LIG/MIG limits against the official PMAY portal before using for a firm eligibility decision."
+  },
+  {
+    "scheme_name": "Atal Pension Yojana (APY)",
+    "ministry": "Ministry of Finance / Pension Fund Regulatory and Development Authority (PFRDA)",
+    "description": "A government-backed voluntary pension scheme mainly for workers in the unorganised sector, providing a guaranteed monthly pension after age 60 based on the subscriber's chosen contribution amount.",
+    "eligibility_clauses": [
+      "Applicant must be an Indian citizen between 18 and 40 years of age at the time of joining.",
+      "Applicant must have a savings bank account or post office savings account linked for auto-debit of contributions.",
+      "Applicant should not be an income-tax payer, per eligibility rules introduced in October 2022 (should be re-verified against the latest PFRDA circular).",
+      "Contribution amount and tenure determine the guaranteed monthly pension slab (Rs. 1,000 to Rs. 5,000) received after age 60."
+    ],
+    "benefit_amount": "Guaranteed monthly pension of Rs. 1,000 to Rs. 5,000 after age 60, depending on contribution slab chosen.",
+    "category_state_applicability": "All Indian states and UTs; primarily targeted at unorganised-sector workers without formal pension coverage.",
+    "source_url": "https://www.npscra.nsdl.co.in/scheme-details.php",
+    "last_verified": "2026-08-29"
+  },
+  {
+    "scheme_name": "Pradhan Mantri Mudra Yojana (PMMY)",
+    "ministry": "Ministry of Finance / Department of Financial Services",
+    "description": "Provides collateral-free loans up to Rs. 20 lakh to non-corporate, non-farm micro and small enterprises, categorized into Shishu, Kishor, Tarun, and Tarun Plus slabs based on loan amount.",
+    "eligibility_clauses": [
+      "Applicant must be a non-corporate, non-farm small/micro entrepreneur (e.g. shopkeeper, trader, artisan, small manufacturer, or service-sector business).",
+      "The business activity must be income-generating and not primarily agricultural (agricultural allied activities may qualify separately under specific conditions).",
+      "Loans are collateral-free but standard bank creditworthiness and documentation checks still apply.",
+      "Shishu covers loans up to Rs. 50,000; Kishor covers Rs. 50,001 to Rs. 5 lakh; Tarun covers Rs. 5,00,001 to Rs. 10 lakh; Tarun Plus covers above Rs. 10 lakh up to Rs. 20 lakh."
+    ],
+    "benefit_amount": "Collateral-free loans up to Rs. 20 lakh across Shishu/Kishor/Tarun/Tarun Plus slabs, from participating banks, NBFCs, and MFIs.",
+    "category_state_applicability": "All Indian states and UTs; for micro and small non-farm enterprises.",
+    "source_url": "https://www.mudra.org.in",
+    "last_verified": "2026-08-29"
+  },
+  {
+    "scheme_name": "National Scholarship Portal - Post-Matric Scholarship for SC/ST/OBC/EBC Students",
+    "ministry": "Ministry of Social Justice and Empowerment / Ministry of Tribal Affairs",
+    "description": "Provides financial assistance covering course fees, maintenance allowance, and other charges to students from SC, ST, OBC, and Economically Backward Class categories studying at the post-matriculation (post-Class-10) level.",
+    "eligibility_clauses": [
+      "Applicant must belong to SC, ST, OBC, or Economically Backward Class category, as applicable to the specific scheme variant.",
+      "Applicant must be enrolled in a recognized post-matric (post-Class-10) course - including undergraduate, postgraduate, diploma, or professional courses.",
+      "Family income must be below the annual income ceiling prescribed for the relevant category and scheme cycle - the exact ceiling is revised periodically and must be checked on the National Scholarship Portal for the current academic year.",
+      "Applicant must not be receiving any other scholarship for the same course/period (no dual benefit)."
+    ],
+    "benefit_amount": "Course fee reimbursement, maintenance allowance, and other allowances; amounts vary by course, category, and state/central scheme variant.",
+    "category_state_applicability": "SC/ST/OBC/EBC students across India; income ceilings and exact amounts vary by category and are revised periodically.",
+    "source_url": "https://scholarships.gov.in",
+    "last_verified": "2026-08-29",
+    "note": "Income ceilings and benefit amounts change by academic year - verify against the current NSP notification before use in a firm eligibility decision."
+  },
+  {
+    "scheme_name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "description": "Provides crop insurance coverage against yield losses due to natural calamities, pests, and diseases, at a low, uniform farmer premium rate, for notified crops in notified areas.",
+    "eligibility_clauses": [
+      "Applicant must be a farmer (owner-cultivator or tenant/sharecropper with valid land or tenancy records) growing a notified crop in a notified area for that season.",
+      "Enrolment is voluntary for all farmers (compulsory enrolment for loanee farmers was made optional following 2020 scheme revisions - verify current status for the relevant state/season).",
+      "Farmer premium is capped at 2% of sum insured for Kharif crops, 1.5% for Rabi crops, and 5% for annual commercial/horticultural crops; the remaining actuarial premium is subsidized by the government.",
+      "Application must be made within the enrolment window announced for each crop season (Kharif/Rabi) in the applicant's state."
+    ],
+    "benefit_amount": "Insurance payout for assessed crop yield loss due to natural calamities, pests, or diseases, based on sum insured; farmer premium capped at 1.5-5% depending on crop/season.",
+    "category_state_applicability": "Farmers in states/UTs that have notified PMFBY for the relevant crop season (implementation varies by state).",
+    "source_url": "https://pmfby.gov.in",
+    "last_verified": "2026-08-29"
+  }
+]

@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.git/
+.gitignore
+data/bm25_index.pkl
+*.md
+.pytest_cache/

@@ -1,0 +1,31 @@
+# Deploy config for Render.com (render.com/docs/deploy-an-image or docs/docker).
+# Not required to use Render specifically - the Dockerfile alone works on
+# Railway, Fly.io, a plain VM, etc. This file just makes Render deployment
+# a one-click "New > Blueprint" import if you choose that route.
+services:
+  - type: web
+    name: scheme-eligibility-rag
+    runtime: docker
+    plan: starter
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: QDRANT_COLLECTION
+        value: gov_schemes
+      - key: SARVAM_API_KEY
+        sync: false
+      - key: DATA_GOV_IN_API_KEY
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        value: "*"
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: "20"
+      - key: RATE_LIMIT_WINDOW_SECONDS
+        value: "60"
+    healthCheckPath: /health
