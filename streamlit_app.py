@@ -7,9 +7,9 @@ from app.config import settings
 logging.basicConfig(level=settings.log_level)
 logger = logging.getLogger(__name__)
 
-st.set_page_config(page_title="Scheme Eligibility RAG", page_icon="🏛️", layout="centered")
+st.set_page_config(page_title="Schema Rag", page_icon="🏛️", layout="centered")
 
-st.title("🏛️ Scheme Eligibility Checker")
+st.title("🏛️ Schema Rag")
 st.markdown("Ask about Indian government welfare scheme eligibility in plain language.")
 
 with st.expander("📖 **How to use this app**", expanded=True):
