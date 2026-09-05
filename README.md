@@ -347,9 +347,7 @@ All settings are managed via environment variables (or `.env` file) and centrali
 
 ---
 
-## 📜 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
