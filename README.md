@@ -1,6 +1,6 @@
 <div align="center">
 
-# RiskSight AI - Scheme Eligibility Checker 🏛️
+# Scheme RAG 🏛️
 
 *An intelligent Retrieval-Augmented Generation (RAG) system for verifying eligibility against thousands of Indian Government Welfare Schemes.*
 
@@ -15,7 +15,7 @@
 
 ## 📖 Overview
 
-**RiskSight AI** is a highly structured RAG application designed to parse, ingest, and query thousands of government welfare schemes. By inputting demographic details (such as occupation, income, state, and category), the AI assistant accurately cross-references eligibility conditions to recommend matching schemes.
+**Scheme RAG** is a highly structured RAG application designed to parse, ingest, and query thousands of government welfare schemes. By inputting demographic details (such as occupation, income, state, and category), the AI assistant accurately cross-references eligibility conditions to recommend matching schemes.
 
 This project was built to address the unstructured nature of scheme documents by extracting the core `eligibility_clauses` and mapping them into a high-performance dense and lexical search pipeline.
 
@@ -84,5 +84,5 @@ python scripts/ingest_pdfs.py --limit 1000
 
 ---
 <div align="center">
-<i>Developed and Maintained for the RiskSight AI Initiative.</i>
+<i>Developed and Maintained for the Scheme RAG Initiative.</i>
 </div>
