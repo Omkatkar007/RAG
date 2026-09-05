@@ -1,6 +1,6 @@
 <div align="center">
 
-# Scheme RAG 🏛️
+# Schema RAG 🏛️
 
 *An intelligent Retrieval-Augmented Generation (RAG) system for verifying eligibility against thousands of Indian Government Welfare Schemes.*
 
@@ -84,5 +84,5 @@ python scripts/ingest_pdfs.py --limit 1000
 
 ---
 <div align="center">
-<i>Developed and Maintained for the Scheme RAG Initiative.</i>
+<i>Developed and Maintained for the Schema RAG Initiative.</i>
 </div>
