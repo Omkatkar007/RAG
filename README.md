@@ -9,7 +9,7 @@
     </a>
     <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
     <img src="https://img.shields.io/badge/RAG-8_Stage_Pipeline-blueviolet?style=for-the-badge" alt="RAG Pipeline">
-    <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
+    
   </p>
 </p>
 
@@ -25,7 +25,7 @@ Scheme RAG is a full-stack **Retrieval-Augmented Generation** system that lets I
 
 | Feature | Description |
 |---|---|
-| 🗣️ **Voice Input (Hindi/Regional)** | Sarvam AI's `saaras:v3` STT converts spoken queries to text |
+| 🗣️ **Voice Input (Hindi/Regional)** | Sarvam AI's `saaras:v3` STT converts spoken queries to text (In Production) |
 | 🔍 **Hybrid Retrieval** | Dense (Qdrant + MiniLM embeddings) + Lexical (BM25 Okapi) search |
 | 🔀 **Reciprocal Rank Fusion** | Merges dense & lexical results by rank, not raw score |
 | 🎯 **Cross-Encoder Reranking** | `ms-marco-MiniLM-L-6-v2` reranker runs locally — zero API cost |
