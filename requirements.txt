@@ -17,10 +17,14 @@ qdrant-client>=1.15
 # LLM generation (Groq-hosted Llama)
 groq
 
-# STT (Sarvam) - plain HTTP client, no official SDK required
+# --- Streamlit UI ---
+streamlit>=1.36.0
+
+# --- Core RAG Pipeline ---HTTP client, no official SDK required
 requests
 
 # Utilities
+pypdf
 tiktoken
 numpy
 tenacity

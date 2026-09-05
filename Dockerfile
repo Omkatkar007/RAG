@@ -18,10 +18,10 @@ COPY scripts ./scripts
 # Pre-download the embedding and reranker models at build time, not on first
 # request - avoids a slow/failing cold start on a platform with a request
 # timeout (Render, Railway, etc. often kill a request that takes too long).
-RUN python -c "from sentence_transformers import SentenceTransformer, CrossEncoder; \
-    SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2'); \
-    CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')"
-
+RUN python -c "from fastembed import TextEmbedding; \
+    TextEmbedding('sentence-transformers/all-MiniLM-L6-v2')"
+RUN python -c "from fastembed.rerank.cross_encoder import TextCrossEncoder; \
+    TextCrossEncoder('Xenova/ms-marco-MiniLM-L-6-v2')"
 EXPOSE 8000
 
 # On container start: rebuild the local BM25 index from whatever's already

@@ -15,7 +15,7 @@ from qdrant_client.http import models as qmodels
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 from app.ingestion.chunking import chunk_metadata_aware
-from app.ingestion.loaders import load_sample_schemes
+from app.ingestion.loaders import load_sample_schemes, load_data_gov_schemes
 from app.pipeline import lexical_retrieval
 from app.pipeline.dense_retrieval import ensure_collection, get_qdrant_client
 from app.pipeline.embeddings import embed_texts
@@ -97,6 +97,12 @@ def ingest_schemes(schemes: list[dict]) -> int:
 def ingest_sample_corpus() -> int:
     schemes = load_sample_schemes()
     logger.info("Loaded %d sample schemes", len(schemes))
+    return ingest_schemes(schemes)
+
+
+def ingest_data_gov_corpus(resource_id: str, limit: int = 100) -> int:
+    schemes = load_data_gov_schemes(resource_id, limit=limit)
+    logger.info("Loaded %d schemes from data.gov.in (resource: %s)", len(schemes), resource_id)
     return ingest_schemes(schemes)
 
 

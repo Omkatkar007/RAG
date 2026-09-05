@@ -177,3 +177,34 @@ def fetch_data_gov_in_dataset(resource_id: str, filters: dict | None = None, lim
     resp = requests.get(f"https://api.data.gov.in/resource/{resource_id}", params=params, timeout=30)
     resp.raise_for_status()
     return resp.json().get("records", [])
+
+
+def load_data_gov_schemes(resource_id: str, column_map: dict[str, str] | None = None, limit: int = 100) -> list[dict]:
+    """
+    Loads scheme data from data.gov.in using the REST API.
+    """
+    records = fetch_data_gov_in_dataset(resource_id, limit=limit)
+    col_map = {**DEFAULT_COLUMN_MAP, **(column_map or {})}
+    schemes: list[dict] = []
+    
+    for row in records:
+        name = row.get(col_map["scheme_name"], "")
+        if not name or not str(name).strip():
+            continue
+
+        eligibility_text = row.get(col_map.get("eligibility_text", ""), "") or ""
+        eligibility_clauses = [
+            clause.strip() for clause in _split_into_clauses(str(eligibility_text)) if clause.strip()
+        ]
+
+        schemes.append({
+            "scheme_name": str(name).strip(),
+            "ministry": str(row.get(col_map.get("ministry", ""), "") or "").strip() or None,
+            "description": str(row.get(col_map.get("description", ""), "") or "").strip() or None,
+            "eligibility_clauses": eligibility_clauses,
+            "benefit_amount": str(row.get(col_map.get("benefit_amount", ""), "") or "").strip() or None,
+            "category_state_applicability": str(row.get(col_map.get("category_state_applicability", ""), "") or "").strip() or None,
+            "source_url": str(row.get(col_map.get("source_url", ""), "") or "").strip() or None,
+            "last_verified": None,
+        })
+    return schemes

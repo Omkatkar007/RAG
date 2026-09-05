@@ -51,7 +51,8 @@ class Settings(BaseSettings):
     offtopic_min_similarity: float = 0.28
 
     # --- data.gov.in (secondary source) ---
-    data_gov_in_api_key: str = ""
+    data_gov_in_api_key: str | None = None
+    data_gov_in_resource_id: str | None = None
 
     # --- Production hardening ---
     cors_allowed_origins: list[str] = ["*"]  # comma-separated in env, e.g. "https://myapp.com,https://www.myapp.com"
